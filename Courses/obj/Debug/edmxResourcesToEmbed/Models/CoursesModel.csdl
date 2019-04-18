@@ -1,0 +1,386 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CoursesModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="LevelOfEducationID" Type="Int32" />
+    <Property Name="FormOfEducationID" Type="Int32" />
+    <Property Name="Duration" Type="Int32" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="Characterization" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OtherSkills" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OtherPosition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OtherProfessionalField" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Departments" Relationship="Self.FK__Course__Departme__6383C8BA" FromRole="Course" ToRole="Departments" />
+    <NavigationProperty Name="FormOfEducation" Relationship="Self.FK__Course__FormOfEd__6477ECF3" FromRole="Course" ToRole="FormOfEducation" />
+    <NavigationProperty Name="LevelOfEducation" Relationship="Self.FK__Course__LevelOfE__656C112C" FromRole="Course" ToRole="LevelOfEducation" />
+    <NavigationProperty Name="CoursePoosition" Relationship="Self.FK__CoursePoo__Cours__66603565" FromRole="Course" ToRole="CoursePoosition" />
+    <NavigationProperty Name="CourseProfessionalField" Relationship="Self.FK__CoursePro__Cours__6A30C649" FromRole="Course" ToRole="CourseProfessionalField" />
+    <NavigationProperty Name="CourseSkill" Relationship="Self.FK__CourseSki__Cours__6E01572D" FromRole="Course" ToRole="CourseSkill" />
+    <NavigationProperty Name="CoursePoosition1" Relationship="Self.fk_CoursePoosition_CourseID" FromRole="Course" ToRole="CoursePoosition" />
+    <NavigationProperty Name="CourseProfessionalField1" Relationship="Self.fk_CourseProfessionalField_CourseID" FromRole="Course" ToRole="CourseProfessionalField" />
+    <NavigationProperty Name="CourseSkill1" Relationship="Self.fk_CourseSkill_CourseID" FromRole="Course" ToRole="CourseSkill" />
+  </EntityType>
+  <EntityType Name="CoursePoosition">
+    <Key>
+      <PropertyRef Name="CoursePoositionID" />
+    </Key>
+    <Property Name="CoursePoositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PositionID" Type="Int32" />
+    <Property Name="CourseID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__CoursePoo__Cours__66603565" FromRole="CoursePoosition" ToRole="Course" />
+    <NavigationProperty Name="Course1" Relationship="Self.fk_CoursePoosition_CourseID" FromRole="CoursePoosition" ToRole="Course" />
+    <NavigationProperty Name="Positions" Relationship="Self.FK__CoursePoo__Posit__6754599E" FromRole="CoursePoosition" ToRole="Positions" />
+    <NavigationProperty Name="Positions1" Relationship="Self.fk_CoursePoosition_PositionID" FromRole="CoursePoosition" ToRole="Positions" />
+  </EntityType>
+  <EntityType Name="CourseProfessionalField">
+    <Key>
+      <PropertyRef Name="CourseProfessionalFieldID" />
+    </Key>
+    <Property Name="CourseProfessionalFieldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="ProfessinalFieldID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__CoursePro__Cours__6A30C649" FromRole="CourseProfessionalField" ToRole="Course" />
+    <NavigationProperty Name="Course1" Relationship="Self.fk_CourseProfessionalField_CourseID" FromRole="CourseProfessionalField" ToRole="Course" />
+    <NavigationProperty Name="ProfessionalField" Relationship="Self.FK__CoursePro__Profe__6B24EA82" FromRole="CourseProfessionalField" ToRole="ProfessionalField" />
+    <NavigationProperty Name="ProfessionalField1" Relationship="Self.fk_CourseProfessionalField_ProfessinalFieldID" FromRole="CourseProfessionalField" ToRole="ProfessionalField" />
+  </EntityType>
+  <EntityType Name="CourseSkill">
+    <Key>
+      <PropertyRef Name="CourseSkillID" />
+    </Key>
+    <Property Name="CourseSkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseID" Type="Int32" />
+    <Property Name="SkillID" Type="Int32" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__CourseSki__Cours__6E01572D" FromRole="CourseSkill" ToRole="Course" />
+    <NavigationProperty Name="Course1" Relationship="Self.fk_CourseSkill_CourseID" FromRole="CourseSkill" ToRole="Course" />
+    <NavigationProperty Name="Skills" Relationship="Self.FK__CourseSki__Skill__6EF57B66" FromRole="CourseSkill" ToRole="Skills" />
+    <NavigationProperty Name="Skills1" Relationship="Self.fk_CourseSkill_SkillID" FromRole="CourseSkill" ToRole="Skills" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="DepartmentID" />
+    </Key>
+    <Property Name="DepartmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameDepartments" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Course__Departme__6383C8BA" FromRole="Departments" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="FormOfEducation">
+    <Key>
+      <PropertyRef Name="FormOfEducationID" />
+    </Key>
+    <Property Name="FormOfEducationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameFormOfEducation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Course__FormOfEd__6477ECF3" FromRole="FormOfEducation" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="LevelOfEducation">
+    <Key>
+      <PropertyRef Name="LevelOfEducationID" />
+    </Key>
+    <Property Name="LevelOfEducationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameLevelOfEducation" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Course__LevelOfE__656C112C" FromRole="LevelOfEducation" ToRole="Course" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="UserName" />
+    </Key>
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Positions">
+    <Key>
+      <PropertyRef Name="PositionID" />
+    </Key>
+    <Property Name="PositionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CoursePoosition" Relationship="Self.FK__CoursePoo__Posit__6754599E" FromRole="Positions" ToRole="CoursePoosition" />
+    <NavigationProperty Name="CoursePoosition1" Relationship="Self.fk_CoursePoosition_PositionID" FromRole="Positions" ToRole="CoursePoosition" />
+  </EntityType>
+  <EntityType Name="ProfessionalField">
+    <Key>
+      <PropertyRef Name="ProfessionalFieldID" />
+    </Key>
+    <Property Name="ProfessionalFieldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CourseProfessionalField" Relationship="Self.FK__CoursePro__Profe__6B24EA82" FromRole="ProfessionalField" ToRole="CourseProfessionalField" />
+    <NavigationProperty Name="CourseProfessionalField1" Relationship="Self.fk_CourseProfessionalField_ProfessinalFieldID" FromRole="ProfessionalField" ToRole="CourseProfessionalField" />
+  </EntityType>
+  <EntityType Name="Skills">
+    <Key>
+      <PropertyRef Name="SkillID" />
+    </Key>
+    <Property Name="SkillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CourseSkill" Relationship="Self.FK__CourseSki__Skill__6EF57B66" FromRole="Skills" ToRole="CourseSkill" />
+    <NavigationProperty Name="CourseSkill1" Relationship="Self.fk_CourseSkill_SkillID" FromRole="Skills" ToRole="CourseSkill" />
+  </EntityType>
+  <Association Name="FK__Course__Departme__6383C8BA">
+    <End Role="Departments" Type="Self.Departments" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Departments">
+        <PropertyRef Name="DepartmentID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Course__FormOfEd__6477ECF3">
+    <End Role="FormOfEducation" Type="Self.FormOfEducation" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormOfEducation">
+        <PropertyRef Name="FormOfEducationID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="FormOfEducationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Course__LevelOfE__656C112C">
+    <End Role="LevelOfEducation" Type="Self.LevelOfEducation" Multiplicity="0..1" />
+    <End Role="Course" Type="Self.Course" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LevelOfEducation">
+        <PropertyRef Name="LevelOfEducationID" />
+      </Principal>
+      <Dependent Role="Course">
+        <PropertyRef Name="LevelOfEducationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CoursePoo__Cours__66603565">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="CoursePoosition" Type="Self.CoursePoosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CoursePoosition">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CoursePro__Cours__6A30C649">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="CourseProfessionalField" Type="Self.CourseProfessionalField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseProfessionalField">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseSki__Cours__6E01572D">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1" />
+    <End Role="CourseSkill" Type="Self.CourseSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseSkill">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CoursePoosition_CourseID">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CoursePoosition" Type="Self.CoursePoosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CoursePoosition">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CourseProfessionalField_CourseID">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseProfessionalField" Type="Self.CourseProfessionalField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseProfessionalField">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CourseSkill_CourseID">
+    <End Role="Course" Type="Self.Course" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseSkill" Type="Self.CourseSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseID" />
+      </Principal>
+      <Dependent Role="CourseSkill">
+        <PropertyRef Name="CourseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CoursePoo__Posit__6754599E">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="0..1" />
+    <End Role="CoursePoosition" Type="Self.CoursePoosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="CoursePoosition">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CoursePoosition_PositionID">
+    <End Role="Positions" Type="Self.Positions" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CoursePoosition" Type="Self.CoursePoosition" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Positions">
+        <PropertyRef Name="PositionID" />
+      </Principal>
+      <Dependent Role="CoursePoosition">
+        <PropertyRef Name="PositionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CoursePro__Profe__6B24EA82">
+    <End Role="ProfessionalField" Type="Self.ProfessionalField" Multiplicity="0..1" />
+    <End Role="CourseProfessionalField" Type="Self.CourseProfessionalField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfessionalField">
+        <PropertyRef Name="ProfessionalFieldID" />
+      </Principal>
+      <Dependent Role="CourseProfessionalField">
+        <PropertyRef Name="ProfessinalFieldID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CourseProfessionalField_ProfessinalFieldID">
+    <End Role="ProfessionalField" Type="Self.ProfessionalField" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseProfessionalField" Type="Self.CourseProfessionalField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProfessionalField">
+        <PropertyRef Name="ProfessionalFieldID" />
+      </Principal>
+      <Dependent Role="CourseProfessionalField">
+        <PropertyRef Name="ProfessinalFieldID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CourseSki__Skill__6EF57B66">
+    <End Role="Skills" Type="Self.Skills" Multiplicity="0..1" />
+    <End Role="CourseSkill" Type="Self.CourseSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skills">
+        <PropertyRef Name="SkillID" />
+      </Principal>
+      <Dependent Role="CourseSkill">
+        <PropertyRef Name="SkillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_CourseSkill_SkillID">
+    <End Role="Skills" Type="Self.Skills" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CourseSkill" Type="Self.CourseSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skills">
+        <PropertyRef Name="SkillID" />
+      </Principal>
+      <Dependent Role="CourseSkill">
+        <PropertyRef Name="SkillID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CoursesEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Course" EntityType="Self.Course" />
+    <EntitySet Name="CoursePoosition" EntityType="Self.CoursePoosition" />
+    <EntitySet Name="CourseProfessionalField" EntityType="Self.CourseProfessionalField" />
+    <EntitySet Name="CourseSkill" EntityType="Self.CourseSkill" />
+    <EntitySet Name="Departments" EntityType="Self.Departments" />
+    <EntitySet Name="FormOfEducation" EntityType="Self.FormOfEducation" />
+    <EntitySet Name="LevelOfEducation" EntityType="Self.LevelOfEducation" />
+    <EntitySet Name="Login" EntityType="Self.Login" />
+    <EntitySet Name="Positions" EntityType="Self.Positions" />
+    <EntitySet Name="ProfessionalField" EntityType="Self.ProfessionalField" />
+    <EntitySet Name="Skills" EntityType="Self.Skills" />
+    <AssociationSet Name="FK__Course__Departme__6383C8BA" Association="Self.FK__Course__Departme__6383C8BA">
+      <End Role="Departments" EntitySet="Departments" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Course__FormOfEd__6477ECF3" Association="Self.FK__Course__FormOfEd__6477ECF3">
+      <End Role="FormOfEducation" EntitySet="FormOfEducation" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Course__LevelOfE__656C112C" Association="Self.FK__Course__LevelOfE__656C112C">
+      <End Role="LevelOfEducation" EntitySet="LevelOfEducation" />
+      <End Role="Course" EntitySet="Course" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CoursePoo__Cours__66603565" Association="Self.FK__CoursePoo__Cours__66603565">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CoursePoosition" EntitySet="CoursePoosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CoursePro__Cours__6A30C649" Association="Self.FK__CoursePro__Cours__6A30C649">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseProfessionalField" EntitySet="CourseProfessionalField" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseSki__Cours__6E01572D" Association="Self.FK__CourseSki__Cours__6E01572D">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseSkill" EntitySet="CourseSkill" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CoursePoosition_CourseID" Association="Self.fk_CoursePoosition_CourseID">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CoursePoosition" EntitySet="CoursePoosition" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CourseProfessionalField_CourseID" Association="Self.fk_CourseProfessionalField_CourseID">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseProfessionalField" EntitySet="CourseProfessionalField" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CourseSkill_CourseID" Association="Self.fk_CourseSkill_CourseID">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="CourseSkill" EntitySet="CourseSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CoursePoo__Posit__6754599E" Association="Self.FK__CoursePoo__Posit__6754599E">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="CoursePoosition" EntitySet="CoursePoosition" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CoursePoosition_PositionID" Association="Self.fk_CoursePoosition_PositionID">
+      <End Role="Positions" EntitySet="Positions" />
+      <End Role="CoursePoosition" EntitySet="CoursePoosition" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CoursePro__Profe__6B24EA82" Association="Self.FK__CoursePro__Profe__6B24EA82">
+      <End Role="ProfessionalField" EntitySet="ProfessionalField" />
+      <End Role="CourseProfessionalField" EntitySet="CourseProfessionalField" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CourseProfessionalField_ProfessinalFieldID" Association="Self.fk_CourseProfessionalField_ProfessinalFieldID">
+      <End Role="ProfessionalField" EntitySet="ProfessionalField" />
+      <End Role="CourseProfessionalField" EntitySet="CourseProfessionalField" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CourseSki__Skill__6EF57B66" Association="Self.FK__CourseSki__Skill__6EF57B66">
+      <End Role="Skills" EntitySet="Skills" />
+      <End Role="CourseSkill" EntitySet="CourseSkill" />
+    </AssociationSet>
+    <AssociationSet Name="fk_CourseSkill_SkillID" Association="Self.fk_CourseSkill_SkillID">
+      <End Role="Skills" EntitySet="Skills" />
+      <End Role="CourseSkill" EntitySet="CourseSkill" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

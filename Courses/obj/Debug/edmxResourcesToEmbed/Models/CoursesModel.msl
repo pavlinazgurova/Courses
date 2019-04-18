@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoursesModelStoreContainer" CdmEntityContainer="CoursesEntities">
+    <EntitySetMapping Name="Course">
+      <EntityTypeMapping TypeName="CoursesModel.Course">
+        <MappingFragment StoreEntitySet="Course">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LevelOfEducationID" ColumnName="LevelOfEducationID" />
+          <ScalarProperty Name="FormOfEducationID" ColumnName="FormOfEducationID" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="Characterization" ColumnName="Characterization" />
+          <ScalarProperty Name="OtherSkills" ColumnName="OtherSkills" />
+          <ScalarProperty Name="OtherPosition" ColumnName="OtherPosition" />
+          <ScalarProperty Name="OtherProfessionalField" ColumnName="OtherProfessionalField" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CoursePoosition">
+      <EntityTypeMapping TypeName="CoursesModel.CoursePoosition">
+        <MappingFragment StoreEntitySet="CoursePoosition">
+          <ScalarProperty Name="CoursePoositionID" ColumnName="CoursePoositionID" />
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseProfessionalField">
+      <EntityTypeMapping TypeName="CoursesModel.CourseProfessionalField">
+        <MappingFragment StoreEntitySet="CourseProfessionalField">
+          <ScalarProperty Name="CourseProfessionalFieldID" ColumnName="CourseProfessionalFieldID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="ProfessinalFieldID" ColumnName="ProfessinalFieldID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CourseSkill">
+      <EntityTypeMapping TypeName="CoursesModel.CourseSkill">
+        <MappingFragment StoreEntitySet="CourseSkill">
+          <ScalarProperty Name="CourseSkillID" ColumnName="CourseSkillID" />
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="CoursesModel.Departments">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+          <ScalarProperty Name="NameDepartments" ColumnName="NameDepartments" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormOfEducation">
+      <EntityTypeMapping TypeName="CoursesModel.FormOfEducation">
+        <MappingFragment StoreEntitySet="FormOfEducation">
+          <ScalarProperty Name="FormOfEducationID" ColumnName="FormOfEducationID" />
+          <ScalarProperty Name="NameFormOfEducation" ColumnName="NameFormOfEducation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LevelOfEducation">
+      <EntityTypeMapping TypeName="CoursesModel.LevelOfEducation">
+        <MappingFragment StoreEntitySet="LevelOfEducation">
+          <ScalarProperty Name="LevelOfEducationID" ColumnName="LevelOfEducationID" />
+          <ScalarProperty Name="NameLevelOfEducation" ColumnName="NameLevelOfEducation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Login">
+      <EntityTypeMapping TypeName="CoursesModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Positions">
+      <EntityTypeMapping TypeName="CoursesModel.Positions">
+        <MappingFragment StoreEntitySet="Positions">
+          <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProfessionalField">
+      <EntityTypeMapping TypeName="CoursesModel.ProfessionalField">
+        <MappingFragment StoreEntitySet="ProfessionalField">
+          <ScalarProperty Name="ProfessionalFieldID" ColumnName="ProfessionalFieldID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Skills">
+      <EntityTypeMapping TypeName="CoursesModel.Skills">
+        <MappingFragment StoreEntitySet="Skills">
+          <ScalarProperty Name="SkillID" ColumnName="SkillID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

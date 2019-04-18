@@ -1,0 +1,53 @@
+﻿@model Courses.Models.Other.CourseViewModel
+
+@{
+    ViewBag.Title = "Разширено Търсене";
+}
+
+<div class="jumbotron text-center lead">
+
+    @using (Html.BeginForm("Result", "Home", FormMethod.Get))
+    {
+        <div class="col-md-6 text-right">
+            Направление: @Html.DropDownList("Departments", new SelectList(ViewBag.Departments), "Изберете")
+            Професионални: @Html.DropDownList("ProfessionalFields", new SelectList(ViewBag.ProfessionalFields), "Изберете")
+        </div>
+        <div class="col-md-6 text-right">
+            Длъжности: @Html.DropDownList("Positions", new SelectList(ViewBag.Positions), "Изберете")
+            Умения: @Html.DropDownList("Skills", new SelectList(ViewBag.Skills), "Изберете")
+        </div>
+        <div>
+            Продължителност:
+            <div>
+                @Html.EnumDropDownListFor(m => m.Duration, "Изберете", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <p>Образователна степен:</p>
+        <div class="col-md-2 text-right">
+            @Html.LabelFor(x => x.Bachelor)
+            @Html.CheckBoxFor(x => x.Bachelor)
+        </div>
+        <div class="col-md-2 text-center">
+            @Html.LabelFor(x => x.Master)
+            @Html.CheckBoxFor(x => x.Master)
+        </div>
+        <div class="col-md-2 text-left">
+            @Html.LabelFor(x => x.Doctor)
+            @Html.CheckBoxFor(x => x.Doctor)
+        </div>
+        <br />
+        <p>Форма на обучение:</p>
+        <div class="col-md-2 text-right">
+            @Html.LabelFor(x => x.Redovno)
+            @Html.CheckBoxFor(x => x.Redovno)
+        </div>
+        <div class="col-md-2 text-center">
+            @Html.LabelFor(x => x.Zadochno)
+            @Html.CheckBoxFor(x => x.Zadochno)
+        </div>
+        <br />
+
+        <input type="submit" id="2" value="Search" />
+    }
+</div>

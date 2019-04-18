@@ -1,0 +1,15 @@
+﻿@model  Courses.Models.Course
+
+@{
+    ViewBag.Title = "Търсене";
+}
+
+<h4>Търсене</h4>
+
+@using (Html.BeginForm("Result", "Home", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}

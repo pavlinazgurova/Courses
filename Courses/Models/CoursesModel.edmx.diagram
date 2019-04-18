@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0cb722b4506c46189036640e67bb640a" Name="Diagram1">
+        <EntityTypeShape EntityType="CoursesModel.Course" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.CoursePoosition" Width="1.5" PointX="5.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.CourseProfessionalField" Width="1.5" PointX="8.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.CourseSkill" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.Departments" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.FormOfEducation" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.LevelOfEducation" Width="1.5" PointX="0.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.Login" Width="1.5" PointX="7.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.Positions" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.ProfessionalField" Width="1.5" PointX="6" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CoursesModel.Skills" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="CoursesModel.FK__Course__Departme__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__Course__FormOfEd__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__Course__LevelOfE__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__CoursePoo__Cours__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__CoursePro__Cours__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__CourseSki__Cours__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.fk_CoursePoosition_CourseID" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.fk_CourseProfessionalField_CourseID" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.fk_CourseSkill_CourseID" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__CoursePoo__Posit__6754599E" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.fk_CoursePoosition_PositionID" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__CoursePro__Profe__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.fk_CourseProfessionalField_ProfessinalFieldID" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.FK__CourseSki__Skill__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="CoursesModel.fk_CourseSkill_SkillID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

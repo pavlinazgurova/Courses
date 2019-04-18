@@ -1,0 +1,20 @@
+﻿@model  Courses.Models.Course
+
+
+@{
+    ViewBag.Title = "Начало";
+}
+
+<h4>Начало</h4>
+
+<div class="col-md-4 text-right">
+    <a href="@Url.Action( "Search", "Home" )">
+        <img src="https://image.freepik.com/free-icon/no-translate-detected_318-56447.jpg" width="200" height="200" alt="Търсене" />
+    </a>
+</div>
+
+<div class="col-md-4 text-center">
+    <a href="@Url.Action( "AdvancedSearch", "Home" )">
+        <img src="https://amw.gdynia.pl/images/AMW/grafiki_i_ikony/files-27717_960_720.png" width="200" height="200" alt="Разширено Търсене" />
+    </a>
+</div>

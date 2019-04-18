@@ -1,0 +1,52 @@
+﻿@model  List<Courses.Models.Course>
+
+@{
+    ViewBag.Title = "Специалности";
+}
+
+@if (Model.Count >= 1)
+{
+    <h2>Специалности:</h2>
+
+    using (Html.BeginForm())
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.ActionLink("Наименование", "Result", new { sortOrder = ViewBag.NameSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Форма на обучение", "Result", new { sortOrder = ViewBag.FormSortParm })
+                </th>
+                <th>
+                    @Html.ActionLink("Образователна степен", "Result", new { sortOrder = ViewBag.LevelSortParm })
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FormOfEducation.NameFormOfEducation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LevelOfEducation.NameLevelOfEducation)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Детайли", "Details", "Home", new { @id = item.CourseID }, null)
+                    </td>
+                </tr>
+            }
+        </table>
+        <br />
+        @*<input type="submit" name="a" id="1" value="Submit" />*@
+    }
+}
+else
+{
+    <p>Няма намерени резултати.</p>
+}
+@Html.EditorFor(model => model)
