@@ -1,0 +1,19 @@
+﻿@model  List<Courses.Models.Course>
+
+@{
+    ViewBag.Title = "Сравняване";
+} 
+
+<div class="jumbotron text-center lead">
+    @using (Html.BeginForm("Comparison", "Home", FormMethod.Post))
+    {
+        <div class="col-md-6 text-right">
+            Изберете специалност 1: @Html.DropDownList("course1", new SelectList(ViewBag.Courses), "Изберете")
+        </div>
+        <div class="col-md-6 text-left">
+            Изберете специалност 2: @Html.DropDownList("course2", new SelectList(ViewBag.Courses), "Изберете")
+        </div>
+
+        <input type="submit" value="Сравни" />
+    }
+</div>

@@ -1,0 +1,49 @@
+﻿@model  List<Courses.Models.Course>
+
+@{
+    ViewBag.Title = "Всички Специалности";
+}
+
+<h3>Всички Специалности</h3>
+
+<h2 class="text-center mt-60">Page @ViewBag.CurrentPage</h2>
+
+@using (Html.BeginForm())
+    {
+<table class="table">
+    <tr>
+        <th>
+            Наименование
+        </th>
+        <th>
+            Форма на обучение
+        </th>
+        <th>
+            Образователна степен
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FormOfEducation.NameFormOfEducation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LevelOfEducation.NameLevelOfEducation)
+            </td>
+            <td>
+                @Html.ActionLink("Детайли", "Details", "Home", new { @id = item.CourseID }, null)
+            </td>
+        </tr>
+    }
+</table>
+    }
+
+<p class="text-center mt-60 ">
+    <a href="/Home/AllCourses?page=@(ViewBag.CurrentPage - 1)" class="btn btn-primary @(ViewBag.CurrentPage == 1 ? "disabled" : string.Empty)"><< Previous</a>
+    <a href="/Home/AllCourses?page=@(ViewBag.CurrentPage + 1)" class="btn btn-primary @(!Model.Any() || Model.Count() < 3 ? "disabled" : string.Empty)">Next >></a>
+</p>

@@ -29,7 +29,7 @@
             ViewBag.ProfessionalFields = db.ProfessionalField.Select(x => x.Name).ToList();
             ViewBag.Skills = db.Skills.Select(x => x.Name).ToList();
             ViewBag.Positions = db.Positions.Select(x => x.Name).ToList();
-            
+
             return View(new CourseViewModel()
             {
                 Bachelor = false,
@@ -39,41 +39,17 @@
         }
 
         [HttpGet]
-        public ActionResult Result(string searchString, FilterModel filterModel, string sortOrder)
+        public ActionResult Result(string searchString, FilterModel filterModel, int page = 1)
         {
             var db = new CoursesEntities();
             var courses = db.Course.ToList();
+            var pageSize = 3;
 
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "Name_desc" : "";
-            ViewBag.FormSortParm = sortOrder == "Form" ? "Form_desc" : "Form";
-            ViewBag.LevelSortParm = sortOrder == "Level" ? "Level_desc" : "Level";
-
-            switch (sortOrder)
-            {
-                case "Name_desc":
-                    courses = courses.OrderByDescending(c => c.Name).ToList();
-                    break;
-                case "Form":
-                    courses = courses.OrderBy(c => c.FormOfEducation.NameFormOfEducation).ToList();
-                    break;
-                case "Form_desc":
-                    courses = courses.OrderByDescending(c => c.FormOfEducation.NameFormOfEducation).ToList();
-                    break;
-                case "Level":
-                    courses = courses.OrderBy(c => c.LevelOfEducation.NameLevelOfEducation).ToList();
-                    break;
-                case "Level_desc":
-                    courses = courses.OrderByDescending(c => c.LevelOfEducation.NameLevelOfEducation).ToList();
-                    break;
-                default:
-                    courses = courses.OrderBy(c => c.Name).ToList();
-                    break;
-            }
+            ViewBag.SearchString = searchString;
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                courses = courses.Where(s => s.Name.ToLower().Contains(searchString.ToLower())
-                               || s.LevelOfEducation.NameLevelOfEducation.ToLower().Contains(searchString.ToLower())).ToList();
+                courses = courses.Where(s => s.Name.ToLower().Contains(searchString.ToLower())).ToList();
             }
             else
             {
@@ -166,7 +142,9 @@
                 }
             }
 
-            return View(courses);
+            ViewBag.CurrentPage = page;
+
+            return View(courses.Skip((page - 1) * pageSize).Take(pageSize).ToList());
         }
 
         [HttpGet]
@@ -187,6 +165,42 @@
             }
 
             return View(course);
+        }
+
+        [HttpGet]
+        public ActionResult Comparison()
+        {
+            var db = new CoursesEntities();
+            var courses = db.Course.AsEnumerable();
+            ViewBag.Courses = db.Course.Select(x => x.Name).ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Comparison(string course1, string course2)
+        {
+            var vm = new ComparisonViewModel();
+            var db = new CoursesEntities();
+
+            var firstCourse = db.Course.FirstOrDefault(x => x.Name == course1);
+            var secondCourse = db.Course.FirstOrDefault(x => x.Name == course2);
+
+            vm.Course1 = firstCourse;
+            vm.Course2 = secondCourse;
+            return View("ComparisonResult", vm);
+        }
+
+        [HttpGet]
+        public ActionResult AllCourses(int page = 1)
+        {
+            var db = new CoursesEntities();
+            var courses = db.Course.ToList();
+            var pageSize = 3;
+
+            ViewBag.CurrentPage = page;
+
+            return View(courses.Skip((page - 1) * pageSize).Take(pageSize).ToList());
         }
     }
 }

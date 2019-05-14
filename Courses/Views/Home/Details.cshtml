@@ -48,10 +48,29 @@
         </table>
     </div>
     <div class="tab-pane fade" id="tab_3">
-        <div style="word-wrap: break-word">
-            <h1>Образователна степен: </h1><p>@Model.LevelOfEducation.NameLevelOfEducation</p>
-            <h1>Форма на обучение: </h1><p>@Model.FormOfEducation.NameFormOfEducation</p>
-            <h1>Продължителност: </h1><p>@Model.Duration</p>
-        </div>
+        <table class="table">
+            <tr>
+                <th>
+                    Образователна степен
+                </th>
+                <th>
+                    Форма на обучение
+                </th>
+                <th>
+                    Продължителност
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    @Model.LevelOfEducation.NameLevelOfEducation
+                </td>
+                <td>
+                    @Model.FormOfEducation.NameFormOfEducation
+                </td>
+                <td>
+                    @Model.Duration
+                </td>
+            </tr>
+        </table>
     </div>
 </div>

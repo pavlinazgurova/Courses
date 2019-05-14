@@ -177,6 +177,7 @@
     <Compile Include="Models\Login.cs">
       <DependentUpon>CoursesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Other\ComparisonViewModel.cs" />
     <Compile Include="Models\Other\CourseViewModel.cs" />
     <Compile Include="Models\Other\Duration.cs" />
     <Compile Include="Models\Other\FilterModel.cs" />
@@ -246,6 +247,9 @@
     <Content Include="Views\Home\Result.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\Comparison.cshtml" />
+    <Content Include="Views\Home\ComparisonResult.cshtml" />
+    <Content Include="Views\Home\AllCourses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
