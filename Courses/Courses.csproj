@@ -178,6 +178,7 @@
       <DependentUpon>CoursesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Other\ComparisonViewModel.cs" />
+    <Compile Include="Models\Other\CourseDetails.cs" />
     <Compile Include="Models\Other\CourseViewModel.cs" />
     <Compile Include="Models\Other\Duration.cs" />
     <Compile Include="Models\Other\FilterModel.cs" />

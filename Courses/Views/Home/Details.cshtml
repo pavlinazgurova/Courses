@@ -1,4 +1,4 @@
-﻿@model  Courses.Models.Course
+﻿@model  Courses.Models.Other.CourseDetails
 
 @{
     ViewBag.Title = "Детайли";
@@ -16,10 +16,13 @@
     <li>
         <a href="#tab_3" data-toggle="tab">Подробности</a>
     </li>
+    <li>
+        <a href="#tab_4" data-toggle="tab">Сходни Специалности</a>
+    </li>
 </ul>
 <div class="tab-content">
     <div class="tab-pane active" id="tab_1">
-        <p>@Html.DisplayFor(model => model.Characterization)</p>
+        <p align="justify">@Html.DisplayFor(model => model.Characterization)</p>
     </div>
     <div class="tab-pane fade" id="tab_2">
         <table class="table">
@@ -37,12 +40,33 @@
             <tr>
                 <td>
                     @Model.OtherSkills
+
+                    <hr size="10" style="border-top: 1px solid black;">
+
+                    @foreach (var skill in Model.Skills)
+                    {
+                        <p>@skill</p>
+                    }
                 </td>
                 <td>
                     @Model.OtherPosition
+
+                    <hr size="10" style="border-top: 1px solid black;">
+
+                    @foreach (var position in Model.Positions)
+                    {
+                        <p>@position</p>
+                    }
                 </td>
                 <td>
                     @Model.OtherProfessionalField
+
+                    <hr size="10" style="border-top: 1px solid black;">
+
+                    @foreach (var profField in Model.ProfessionalFields)
+                    {
+                        <p>@profField</p>
+                    }
                 </td>
             </tr>
         </table>
@@ -57,20 +81,54 @@
                     Форма на обучение
                 </th>
                 <th>
-                    Продължителност
+                    Продължителност в семестри
+                </th>
+                <th>
+                    Направление
                 </th>
             </tr>
             <tr>
                 <td>
-                    @Model.LevelOfEducation.NameLevelOfEducation
+                    @Model.LevelOfEducation
                 </td>
                 <td>
-                    @Model.FormOfEducation.NameFormOfEducation
+                    @Model.FormOfEducation
                 </td>
                 <td>
                     @Model.Duration
                 </td>
+                <td>
+                    @Model.Department
+                </td>
             </tr>
         </table>
+    </div>
+    <div class="tab-pane fade" id="tab_4">
+        @if (Model.SimilarCourses.Count >= 1)
+        {
+            foreach (var course in Model.SimilarCourses)
+            {
+                <div class="row">
+                    <div class="col-md-2 text-left">
+                        <h4>@course.Value</h4>
+                    </div>
+                    <div class="col-md-2 text-left">
+                        @using (Html.BeginForm("Comparison", "Home", FormMethod.Post))
+                        {
+                            <h4>@Html.Hidden("course1", Model.Name)</h4>
+                            <h4>@Html.Hidden("course2", course.Value)</h4>
+                            <h4><input class="btn btn-primary" type="submit" value="Сравни" /></h4>
+                        }
+                    </div>
+                <div class="col-md-2 text-left">
+                    <h4>@Html.ActionLink("Детайли", "Details", "Home", new { @id = course.Key }, new { @class = "btn btn-primary" })</h4>
+                </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Няма намерени резултати.</p>
+        }
     </div>
 </div>

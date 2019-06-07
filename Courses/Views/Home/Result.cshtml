@@ -4,7 +4,7 @@
     ViewBag.Title = "Специалности";
 }
 
-<h2 class="text-center mt-60">Page @ViewBag.CurrentPage</h2>
+<h6 class="text-center mt-60">Страница @ViewBag.CurrentPage</h6>
 
 @if (Model.Count >= 1)
 {
@@ -44,9 +44,8 @@
             }
         </table>
         <br />
-        @*<input type="submit" name="a" id="1" value="Submit" />*@
     }
-    
+
     var queryString = string.Empty;
 
     if (!string.IsNullOrEmpty(ViewBag.SearchString))
@@ -59,9 +58,9 @@
     else
     {
         var currentDepartment = Request.QueryString["Departments"];
-        var currentProfessionalField = Request.QueryString["ProfessionalFields"];
-        var currentPosition = Request.QueryString["Positions"];
-        var currentSkill = Request.QueryString["Skills"];
+        var currentSkill = Request.QueryString.GetValues("NewSkills");
+        var currentPosition = Request.QueryString.GetValues("NewPositions");
+        var currentProfField = Request.QueryString.GetValues("NewProfesionalFields");
         var currentDuration = Request.QueryString["Duration"];
         var currentBachelor = Request.QueryString["Bachelor"];
         var currentMaster = Request.QueryString["Master"];
@@ -69,10 +68,35 @@
         var currentRedovno = Request.QueryString["Redovno"];
         var currentZadochno = Request.QueryString["Zadochno"];
 
+        var currentSkillQuery = string.Empty;
+        var currentProfessionalFieldQuery = string.Empty;
+        var currentPositionQuery = string.Empty;
+
+        if (currentSkill != null && currentSkill.Length >= 1)
+        {
+            foreach (var skill in currentSkill)
+            {
+                currentSkillQuery += "NewSkills=" + skill + "&";
+            }
+        }
+
+        if (currentProfField != null && currentProfField.Length >= 1)
+        {
+            foreach (var profField in currentProfField)
+            {
+                currentProfessionalFieldQuery += "NewProfesionalFields=" + profField + "&";
+            }
+        }
+
+        if (currentPosition != null && currentPosition.Length >= 1)
+        {
+            foreach (var position in currentPosition)
+            {
+                currentPositionQuery += "NewPositions=" + position + "&";
+            }
+        }
+
         var currentDepartmentQuery = currentDepartment != null ? "Departments=" + currentDepartment : string.Empty;
-        var currentProfessionalFieldQuery = currentProfessionalField != null ? "ProfessionalFields=" + currentProfessionalField : string.Empty;
-        var currentPositionQuery = currentPosition != null ? "Positions=" + currentPosition : string.Empty;
-        var currentSkillQuery = currentSkill != null ? "Skills=" + currentSkill : string.Empty;
         var currentDurationQuery = currentDuration != "0" ? "Duration=" + currentDuration : "Duration=" + "0";
         var currentBachelorQuery = currentBachelor == "false" ? "Bachelor=" + "false" : "Bachelor=" + "true";
         var currentMasterQuery = currentMaster == "false" ? "Master=" + "false" : "Master=" + "true";
@@ -80,15 +104,15 @@
         var currentRedovnoQuery = currentRedovno == "false" ? "Redovno=" + "false" : "Redovno=" + "true";
         var currentZadochnoQuery = currentZadochno == "false" ? "Zadochno=" + "false" : "Zadochno=" + "true";
 
-        queryString = "&" + currentDepartmentQuery + "&" + currentProfessionalFieldQuery + "&" +
-                        currentPositionQuery + "&" + currentSkillQuery + "&" + currentDurationQuery + "&" + currentBachelorQuery + "&" +
+        queryString = "&" + currentDepartmentQuery + "&" + currentProfessionalFieldQuery +
+                        currentPositionQuery + currentSkillQuery + currentDurationQuery + "&" + currentBachelorQuery + "&" +
                         currentMasterQuery + "&" + currentDoctorQuery + "&" + currentRedovnoQuery + "&" + currentZadochnoQuery;
     }
 
 
     <p class="text-center mt-60 ">
-        <a href="/Home/Result?page=@(ViewBag.CurrentPage - 1)@queryString" class="btn btn-primary @(ViewBag.CurrentPage == 1 ? "disabled" : string.Empty)">Previous</a>
-        <a href="/Home/Result?page=@(ViewBag.CurrentPage + 1)@queryString" class="btn btn-primary @(!Model.Any() || Model.Count() < 3 ? "disabled" : string.Empty)">Next</a>
+        <a href="/Home/Result?page=@(ViewBag.CurrentPage - 1)@queryString" class="btn btn-primary @(ViewBag.CurrentPage == 1 ? "disabled" : string.Empty)">Предишна</a>
+        <a href="/Home/Result?page=@(ViewBag.CurrentPage + 1)@queryString" class="btn btn-primary @(!Model.Any() || Model.Count() < 5 ? "disabled" : string.Empty)">Следваща</a>
     </p>
 }
 else

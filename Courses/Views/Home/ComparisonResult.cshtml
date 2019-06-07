@@ -8,52 +8,180 @@
 
 @using (Html.BeginForm())
 {
-<table class="table">
-    <tr>
-        <th>Наименование:</th>
-        <th><h3>@Model.Course1.Name</h3></th>
-        <th><h3>@Model.Course2.Name</h3></th>
-    </tr>
-    <tr>
-        <td>Форма на обучение:</td>
-        <td>@Model.Course1.FormOfEducation.NameFormOfEducation</td>
-        <td>@Model.Course2.FormOfEducation.NameFormOfEducation</td>
-    </tr>
-    <tr>
-        <td>Образователна степен:</td>
-        <td>@Model.Course1.LevelOfEducation.NameLevelOfEducation</td>
-        <td>@Model.Course2.LevelOfEducation.NameLevelOfEducation</td>
-    </tr>
-    <tr>
-        <td>Направление:</td>
-        <td>@Model.Course1.Departments.NameDepartments</td>
-        <td>@Model.Course2.Departments.NameDepartments</td>
-    </tr>
-    <tr>
-        <td>Продължителност:</td>
-        <td>@Model.Course1.Duration</td>
-        <td>@Model.Course2.Duration</td>
-    </tr>
-    <tr>
-        <td>Умения:</td>
-        <td>@Model.Course1.OtherSkills</td>
-        <td>@Model.Course2.OtherSkills</td>
-    </tr>
-    <tr>
-        <td>Длъжности:</td>
-        <td>@Model.Course1.OtherPosition</td>
-        <td>@Model.Course2.OtherPosition</td>
-    </tr>
-    <tr>
-        <td>Професионални области:</td>
-        <td>@Model.Course1.OtherProfessionalField</td>
-        <td>@Model.Course2.OtherProfessionalField</td>
-    </tr>
-    <tr>
-        <td>Описание:</td>
-        <td>@Model.Course1.Characterization</td>
-        <td>@Model.Course2.Characterization</td>
-    </tr>
-</table>
+    <div class="row">
+        <div class="col-md-2">
+            Наименование:
+        </div>
+        <div class="col-md-5">
+            <h3>@Model.Course1.Name</h3>
+        </div>
+        <div class="col-md-5">
+            <h3>@Model.Course2.Name</h3>
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
 
+    <div class="row">
+        <div class="col-md-2">
+            Форма на обучение:
+        </div>
+        <div class="col-md-5">
+            @Model.Course1.FormOfEducation.NameFormOfEducation
+        </div>
+        <div class="col-md-5">
+            @Model.Course2.FormOfEducation.NameFormOfEducation
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Образователна степен:
+        </div>
+        <div class="col-md-5">
+            @Model.Course1.LevelOfEducation.NameLevelOfEducation
+        </div>
+        <div class="col-md-5">
+            @Model.Course2.LevelOfEducation.NameLevelOfEducation
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Направление:
+        </div>
+        <div class="col-md-5">
+            @Model.Course1.Departments.NameDepartments
+        </div>
+        <div class="col-md-5">
+            @Model.Course2.Departments.NameDepartments
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Продължителност:
+        </div>
+        <div class="col-md-5">
+            @Model.Course1.Duration
+        </div>
+        <div class="col-md-5">
+            @Model.Course2.Duration
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Умения:
+        </div>
+        <div class="col-md-5">
+            @foreach (var skill in Model.Course1SKills)
+            {
+                if (skill.Item2 == false)
+                {
+                    <p style="background-color:#ccffcc">@skill.Item1</p>
+                }
+                else
+                {
+                    <p>@skill.Item1</p>
+                }
+            }
+        </div>
+        <div class="col-md-5">
+            @foreach (var skill in Model.Course2SKills)
+            {
+                if (skill.Item2 == false)
+                {
+                    <p style="background-color:#ccffcc">@skill.Item1</p>
+                }
+                else
+                {
+                    <p>@skill.Item1</p>
+                }
+            }
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Длъжности:
+        </div>
+        <div class="col-md-5">
+            @foreach (var position in Model.Course1Positions)
+            {
+                if (position.Item2 == false)
+                {
+                    <p style="background-color:#ccffcc">@position.Item1</p>
+                }
+                else
+                {
+                    <p>@position.Item1</p>
+                }
+            }
+        </div>
+        <div class="col-md-5">
+            @foreach (var position in Model.Course2Positions)
+            {
+                if (position.Item2 == false)
+                {
+                    <p style="background-color:#ccffcc">@position.Item1</p>
+                }
+                else
+                {
+                    <p>@position.Item1</p>
+                }
+            }
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Професионални области:
+        </div>
+        <div class="col-md-5">
+            @foreach (var profField in Model.Course1ProfesionalFields)
+            {
+                if (profField.Item2 == false)
+                {
+                    <p style="background-color:#ccffcc">@profField.Item1</p>
+                }
+                else
+                {
+                    <p>@profField.Item1</p>
+                }
+            }
+        </div>
+        <div class="col-md-5">
+            @foreach (var profField in Model.Course2ProfesionalFields)
+            {
+                if (profField.Item2 == false)
+                {
+                    <p style="background-color:#ccffcc">@profField.Item1</p>
+                }
+                else
+                {
+                    <p>@profField.Item1</p>
+                }
+            }
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
+
+    <div class="row">
+        <div class="col-md-2">
+            Описание:
+        </div>
+        <div class="col-md-5">
+            @Model.Course1.Characterization
+        </div>
+        <div class="col-md-5">
+            @Model.Course2.Characterization
+        </div>
+    </div>
+    <hr size="10" style="border-top: 1px solid black;">
 }
